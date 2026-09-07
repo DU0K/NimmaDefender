@@ -22,4 +22,4 @@
 ### - Speeld zich af net buiten de stadsmuren van Nijmegen.
 
 ## Voorbeeld Consept-Art
-![IMG](/Consept-Art.png)
+![IMG](./Consept-Art.png)
