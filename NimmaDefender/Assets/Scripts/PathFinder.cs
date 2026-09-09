@@ -3,21 +3,23 @@ using UnityEngine;
 
 public class PathFinder : MonoBehaviour
 {
+    //DebugTools
+    DebugTools debugTools;
+
     [SerializeField] private float enemySpeed = 1;
     private GameObject[] wayPoints;
     private int nextWayPoint = 1;
     private GameObject coliderAnchor;
     private bool canMove = true;
-
     DamageManager DamageManager;
 
     private void Start()
     {
-        DamageManager = FindAnyObjectByType<DamageManager>();
+        debugTools = FindAnyObjectByType<DebugTools>();
 
+        DamageManager = FindAnyObjectByType<DamageManager>();
         wayPoints = GameObject.FindGameObjectsWithTag("Waypoints");
         Array.Sort(wayPoints, (a, b) => a.name.CompareTo(b.name));
-
         coliderAnchor = gameObject.GetComponentInChildren<Transform>().gameObject;
     }
 
@@ -40,15 +42,15 @@ public class PathFinder : MonoBehaviour
     {
         if (trigger.gameObject.CompareTag("Gate"))
         {
-            //canMove = true;
+            canMove = true;
         }
     }
 
     private void PathMovement()
     {
-        transform.position = Vector3.MoveTowards(transform.position, wayPoints[nextWayPoint].transform.position, enemySpeed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, wayPoints[nextWayPoint].transform.position, enemySpeed * Time.deltaTime * debugTools.TimeScale);
         coliderAnchor.transform.rotation = Quaternion.LookRotation(Vector3.forward, wayPoints[nextWayPoint].transform.position - transform.position);
-        if (transform.position == wayPoints[nextWayPoint].transform.position)
+        if (transform.position == wayPoints[nextWayPoint].transform.position && nextWayPoint < (wayPoints.Length - 1))
         {
             nextWayPoint++;
         }

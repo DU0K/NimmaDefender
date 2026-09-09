@@ -12,7 +12,6 @@ public class DamageManager : MonoBehaviour
     private void Start()
     {
         GameManager gameManager = FindAnyObjectByType<GameManager>();
-        Debug.Log(transform.parent.parent.gameObject.name);
         if (transform.parent.parent.gameObject.CompareTag("Wigmannen"))
         {
             damage = gameManager.Damage1;
@@ -27,9 +26,9 @@ public class DamageManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D trigger)
     {
-        triggerObject = trigger.gameObject;
         if (trigger.gameObject.CompareTag("Gate"))
         {
+            triggerObject = trigger.gameObject;
             canAttack = true;
             StartCoroutine(Attack());
         }
@@ -46,16 +45,13 @@ public class DamageManager : MonoBehaviour
     private IEnumerator Attack()
     {
         yield return new WaitForSeconds(damageDelay);
-        triggerObject.GetComponent<Health>().TakeDamage(damage);
+        if (triggerObject && triggerObject.GetComponent<Health>().CurrentHealth > 0)
+        {
+            triggerObject.GetComponent<Health>().TakeDamage(damage);
+        }
         if (canAttack)
         {
             StartCoroutine(Attack());
         }
-    }
-
-    private void Update()
-    {
-        Debug.Log(damage);
-        Debug.Log(damageDelay);
     }
 }
