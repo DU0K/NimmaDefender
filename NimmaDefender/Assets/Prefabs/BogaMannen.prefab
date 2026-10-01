@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 774905472356474610}
   - component: {fileID: 5584206046200501996}
   - component: {fileID: 6626396802246374754}
+  - component: {fileID: 5753186125798323973}
   m_Layer: 0
   m_Name: BogaMannen
   m_TagString: Bogamannen
@@ -301,6 +302,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &5753186125798323973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3457813895879529451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2b6239eb5851084286d532ffe146bf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Health
 --- !u!1 &8772973127431505223
 GameObject:
   m_ObjectHideFlags: 0
