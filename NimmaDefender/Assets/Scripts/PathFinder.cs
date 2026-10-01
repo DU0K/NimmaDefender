@@ -11,13 +11,11 @@ public class PathFinder : MonoBehaviour
     private int nextWayPoint = 1;
     private GameObject coliderAnchor;
     private bool canMove = true;
-    DamageManager DamageManager;
 
     private void Start()
     {
         debugTools = FindAnyObjectByType<DebugTools>();
 
-        DamageManager = FindAnyObjectByType<DamageManager>();
         wayPoints = GameObject.FindGameObjectsWithTag("Waypoints");
         Array.Sort(wayPoints, (a, b) => a.name.CompareTo(b.name));
         coliderAnchor = gameObject.GetComponentInChildren<Transform>().gameObject;

@@ -1,42 +1,49 @@
 using UnityEngine;
-using UnityEngine.UI;
 using System.Collections;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] private Image dropDown;
+    [SerializeField] private DropDownScroller dropDownScroller;
+    [SerializeField] private RectTransform rectTransform;
+    float Max = -700f;
+    float Min = 0f;
+    float snelheid = 4000f;
+
+    private void Awake()
+    {
+        StartCoroutine(FoldUp());
+    }
 
     public void ClickedButton()
     {
-        Debug.Log("clicked");
-        StartCoroutine(ExtendDropDown());
+        if (rectTransform.offsetMax.x == Min)
+        {
+            dropDownScroller.ResetPosition();
+            StartCoroutine(FoldUp());
+        }
+        else if (rectTransform.offsetMax.x == Max)
+        {
+            StartCoroutine(Extend());
+        }
     }
 
-    private IEnumerator ExtendDropDown()
+    private IEnumerator FoldUp()
     {
-        Debug.Log(dropDown.rectTransform.offsetMax.x);
-
-        float Max = -700f;
-        float Min = 0f;
-        float snelheid = 4000f;
-
-        if (dropDown.rectTransform.offsetMax.x == Min)
+        while (rectTransform.offsetMax.x > Max)
         {
-            while (dropDown.rectTransform.offsetMax.x > Max)
-            {
-                float nieuweX = Mathf.MoveTowards(dropDown.rectTransform.offsetMax.x, Max, snelheid * Time.deltaTime);
-                dropDown.rectTransform.offsetMax = new Vector2(nieuweX, dropDown.rectTransform.offsetMax.y);
-                yield return null;
-            }
+            float nieuweX = Mathf.MoveTowards(rectTransform.offsetMax.x, Max, snelheid * Time.deltaTime);
+            rectTransform.offsetMax = new Vector2(nieuweX, rectTransform.offsetMax.y);
+            yield return null;
         }
-        else if (dropDown.rectTransform.offsetMax.x == Max)
+    }
+
+    private IEnumerator Extend()
+    {
+        while (rectTransform.offsetMax.x < Min)
         {
-            while (dropDown.rectTransform.offsetMax.x < Min)
-            {
-                float nieuweX = Mathf.MoveTowards(dropDown.rectTransform.offsetMax.x, Min, snelheid * Time.deltaTime);
-                dropDown.rectTransform.offsetMax = new Vector2(nieuweX, dropDown.rectTransform.offsetMax.y);
-                yield return null;
-            }
+            float nieuweX = Mathf.MoveTowards(rectTransform.offsetMax.x, Min, snelheid * Time.deltaTime);
+            rectTransform.offsetMax = new Vector2(nieuweX, rectTransform.offsetMax.y);
+            yield return null;
         }
     }
 }

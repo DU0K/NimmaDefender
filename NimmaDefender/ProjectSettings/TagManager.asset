@@ -8,6 +8,8 @@ TagManager:
   - Gate
   - Bogamannen
   - Wigmannen
+  - Sagittarii
+  - TowerPoint
   layers:
   - Default
   - TransparentFX

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1518038892352484118}
   - component: {fileID: 7296533854574448804}
   - component: {fileID: 3253844184736189702}
+  - component: {fileID: 5611528294376783943}
   m_Layer: 0
   m_Name: WigMannen
   m_TagString: Wigmannen
@@ -122,7 +123,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2b6239eb5851084286d532ffe146bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
-  currentHealth: 0
 --- !u!50 &7296533854574448804
 Rigidbody2D:
   serializedVersion: 5
@@ -196,6 +196,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.3, y: 0.15}
   m_EdgeRadius: 0
+--- !u!114 &5611528294376783943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3457813895879529451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2b6239eb5851084286d532ffe146bf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Health
 --- !u!1 &7690918072360976608
 GameObject:
   m_ObjectHideFlags: 0
