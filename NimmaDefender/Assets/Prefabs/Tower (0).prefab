@@ -137,6 +137,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57a59d31e50704947860238d37816fc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Sagittarii
-  damageDelay: 2
-  damage: 20
+  damageDelay: 3
+  damage: 15
   projectile: {fileID: 6076561026006878465, guid: 1b2aad9858f2c7e46b9d0f1c0e09c607, type: 3}

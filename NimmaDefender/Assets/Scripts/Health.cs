@@ -8,8 +8,11 @@ public class Health : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private BoxCollider2D boxCollider;
 
+    private MoneyManager moneyManager;
+
     private void Start()
     {
+        moneyManager = FindAnyObjectByType<MoneyManager>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         boxCollider = GetComponent<BoxCollider2D>();
 
@@ -32,6 +35,7 @@ public class Health : MonoBehaviour
         if (currentHealth <= 0 && !gameObject.CompareTag("Gate"))
         {
             Destroy(gameObject);
+            moneyManager.addMoney(20);
         }
         else if (currentHealth <= 0 && gameObject.CompareTag("Gate"))
         {

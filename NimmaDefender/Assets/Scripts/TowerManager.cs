@@ -14,6 +14,8 @@ public class TowerManager : MonoBehaviour, IDragHandler, IEndDragHandler
     private Canvas canvas;
     private Vector2 originalPosition;
 
+    private MoneyManager moneyManager;
+
     private void Awake()
     {
         drag = inputActions.FindActionMap("Main").FindAction("Drag");
@@ -22,6 +24,8 @@ public class TowerManager : MonoBehaviour, IDragHandler, IEndDragHandler
         rectTransform = GetComponent<RectTransform>();
         originalPosition = rectTransform.anchoredPosition;
         canvas = GetComponentInParent<Canvas>();
+
+        moneyManager = FindAnyObjectByType<MoneyManager>(); 
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -59,6 +63,8 @@ public class TowerManager : MonoBehaviour, IDragHandler, IEndDragHandler
             {
                 towerVisual.GetComponent<SpriteRenderer>().enabled = true;
                 towerVisual.GetComponent<Sagittarii>().enabled = true;
+
+                moneyManager.removeMoney(100);
             }
             else
             {
